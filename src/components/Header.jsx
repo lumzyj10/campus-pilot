@@ -11,7 +11,8 @@ import {
   User,
   Database,
   Sun,
-  Moon
+  Moon,
+  LogOut
 } from 'lucide-react';
 import { getLagosNow } from '../utils/timeUtils';
 import { CampusLogo } from './CampusLogo';
@@ -25,7 +26,8 @@ export function Header({
   onToggleTheme,
   onOpenDocs,
   studentProfile,
-  onOpenProfile
+  onOpenProfile,
+  onLogout
 }) {
   const [lagosTime, setLagosTime] = useState('');
 
@@ -133,6 +135,15 @@ export function Header({
             alt={studentProfile.name}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
+        </button>
+
+        {/* Log Out */}
+        <button
+          className="icon-btn logout-btn"
+          onClick={onLogout}
+          title="Log out & return to intro screen"
+        >
+          <LogOut size={16} />
         </button>
       </div>
     </header>

@@ -193,6 +193,18 @@ export default function App() {
     setActiveTab('ai');
   };
 
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem('campuspilot_user');
+      localStorage.removeItem('campuspilot_events');
+      localStorage.removeItem('campuspilot_reminders');
+    } catch (e) {
+      console.error(e);
+    }
+    setStudentProfile(DEFAULT_USER);
+    setActiveTab('today');
+  };
+
   if (!studentProfile || !studentProfile.isOnboarded) {
     return (
       <IntroPage
@@ -229,6 +241,7 @@ export default function App() {
         onOpenDocs={() => setIsDocsModalOpen(true)}
         studentProfile={studentProfile}
         onOpenProfile={() => setIsOnboardingOpen(true)}
+        onLogout={handleLogout}
       />
 
       {/* Main View Area */}
